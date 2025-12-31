@@ -1,0 +1,14 @@
+Dear {{manager_name}},
+
+I'm reaching out regarding the {{role}} position at {{company}}. With 4+ years building production data systems, I've developed expertise that aligns well with modern data engineering challenges.
+
+At Ford Motor Company and Ring Therapeutics, I've designed AWS-based data platforms processing millions of daily records, built real-time streaming pipelines with Kafka and Flink, and developed scalable ETL workflows using PySpark and dbt. My experience spans dimensional modeling in Redshift, orchestrating complex workflows with Airflow and Dagster, and implementing data quality frameworks that ensure reliability at scale.
+
+I'm particularly drawn to {{company}}'s work and would welcome the opportunity to discuss how my background in Python, SQL, Spark, and cloud-native architectures could contribute to your data initiatives.
+
+I've attached my resume for your review. Would you be open to a brief conversation, or could you direct me to the appropriate hiring manager?
+
+Best regards,
+Bhuwaneshwar Sagar Chintala
+bsagar0706@gmail.com 
+https://www.linkedin.com/in/bhuwaneshwar-sagar/

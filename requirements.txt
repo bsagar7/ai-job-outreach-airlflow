@@ -3,4 +3,5 @@ openpyxl
 boto3
 python-dotenv
 requests
-
+apache-airflow-providers-amazon
+apache-airflow-providers-smtp>=1.7.0

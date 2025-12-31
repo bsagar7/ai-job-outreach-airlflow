@@ -1,7 +1,12 @@
 # version: "3.8"
+# build: .
+# image: ai-job-outreach-airflow:2.8.1
+
 
 x-airflow-common: &airflow-common
-  image: apache/airflow:2.8.1
+  build: .
+  # image: apache/airflow:2.8.1 # Use this for official image, it will not have custom dependencies
+  image: ai-job-outreach-airflow:2.8.1 # Use this for custom image with dependencies from requirements.txt
   env_file:
     - .env
   volumes:
@@ -28,20 +33,39 @@ services:
       retries: 5
       start_period: 5s
 
+  # airflow-init:
+  #   <<: *airflow-common
+  #   entrypoint: /bin/bash
+  #   command: >
+  #     -c "
+  #     airflow db migrate &&
+  #     airflow users create
+  #       --username admin
+  #       --password admin
+  #       --firstname Admin
+  #       --lastname User
+  #       --role Admin
+  #       --email admin@example.com || true
+  #     "
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+
+## When clean rebuild, use this airflow-init format. As the above code is not initializing DB properly.
   airflow-init:
     <<: *airflow-common
     entrypoint: /bin/bash
-    command: >
-      -c "
-      airflow db migrate &&
-      airflow users create
-        --username admin
-        --password admin
-        --firstname Admin
-        --lastname User
-        --role Admin
-        --email admin@example.com || true
-      "
+    command:
+      - -c
+      - |
+        airflow db migrate
+        airflow users create \
+          --username admin \
+          --password admin \
+          --firstname Admin \
+          --lastname User \
+          --role Admin \
+          --email admin@example.com || true
     depends_on:
       postgres:
         condition: service_healthy
